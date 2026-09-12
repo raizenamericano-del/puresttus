@@ -1,0 +1,22 @@
+# =============================================================================
+#  KyyPureStatus — .dockerignore
+# =============================================================================
+.git
+.gitignore
+.github
+node_modules
+client/node_modules
+client/dist
+data
+!data/.gitkeep
+.env
+.env.*
+*.log
+.DS_Store
+.idea
+.vscode
+coverage
+scripts/smoke.js
+scripts/integration.js
+README.md
+docker-compose.yml

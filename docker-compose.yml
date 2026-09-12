@@ -1,0 +1,52 @@
+# =============================================================================
+#  KyyPureStatus — docker-compose (jalanin lokal / VPS tanpa Railway)
+#
+#    docker compose up -d --build
+#    buka http://localhost:8080
+# =============================================================================
+services:
+  kyypurestatus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kyydevv/kyypurestatus:latest
+    container_name: kyypurestatus
+    restart: unless-stopped
+    ports:
+      - '${PORT:-8080}:8080'
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+      HOST: 0.0.0.0
+      MOCK_SEND: ${MOCK_SEND:-false}
+      DATA_DIR: /data
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-100}
+      WA_MEDIA_LIMIT_MB: ${WA_MEDIA_LIMIT_MB:-50}
+      CLEANUP_INTERVAL_MS: ${CLEANUP_INTERVAL_MS:-600000}
+      UPLOAD_TTL_MIN: ${UPLOAD_TTL_MIN:-120}
+      OUTPUT_TTL_MIN: ${OUTPUT_TTL_MIN:-240}
+      HISTORY_LIMIT: ${HISTORY_LIMIT:-8}
+      WA_DEVICE_NAME: ${WA_DEVICE_NAME:-KyyPureStatus}
+      WA_RECONNECT_MIN_MS: ${WA_RECONNECT_MIN_MS:-2000}
+      WA_RECONNECT_MAX_MS: ${WA_RECONNECT_MAX_MS:-30000}
+      API_TOKEN: ${API_TOKEN:-}
+      CORS_ORIGIN: ${CORS_ORIGIN:-*}
+    volumes:
+      # Volume persisten: session WA + hasil kompresi tetep ada walau container mati
+      - kyy-data:/data
+    healthcheck:
+      test: ['CMD', 'curl', '-fsS', 'http://127.0.0.1:8080/api/health']
+      interval: 30s
+      timeout: 6s
+      retries: 4
+      start_period: 45s
+    # ffmpeg butuh napas buat encode — kasih limit CPU/mem kalo server lu kecil
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '2'
+    #       memory: 2G
+
+volumes:
+  kyy-data:
+    driver: local

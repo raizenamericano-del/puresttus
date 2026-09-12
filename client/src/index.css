@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   KyyPureStatus — Design System (Vercel/Linear dark vibe)
+   bg #07070d | violet #8b5cf6 | fuchsia #d946ef | cyan #22d3ee
+   (c) KyyDevv
+   ========================================================================== */
+
+@layer base {
+  * {
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-900 text-gray-200 antialiased;
+    background-image:
+      radial-gradient(1100px 620px at 12% -12%, rgba(139, 92, 246, 0.16), transparent 58%),
+      radial-gradient(900px 520px at 92% 4%, rgba(217, 70, 239, 0.12), transparent 55%),
+      radial-gradient(1000px 700px at 50% 108%, rgba(34, 211, 238, 0.1), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.4);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.5), rgba(34, 211, 238, 0.35));
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.8), rgba(34, 211, 238, 0.6));
+    background-clip: padding-box;
+  }
+
+  input,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  /* ---- permukaan kartu ---- */
+  .card {
+    @apply relative rounded-2xl border border-white/[0.07] bg-base-800/70 backdrop-blur-xl;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+      0 30px 80px -50px rgba(0, 0, 0, 0.95);
+  }
+
+  .card-hover {
+    @apply transition-colors duration-300 hover:border-brand-violet/35;
+  }
+
+  .glass {
+    @apply border border-white/[0.07] bg-white/[0.03] backdrop-blur-xl;
+  }
+
+  /* ---- teks gradien ---- */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, #a78bfa 0%, #d946ef 46%, #22d3ee 100%);
+  }
+
+  .text-gradient-soft {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #c4b5fd, #f0abfc 55%, #67e8f9);
+  }
+
+  /* ---- tombol ---- */
+  .btn {
+    @apply relative inline-flex select-none items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+           transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-violet/60
+           disabled:pointer-events-none disabled:opacity-45;
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background-image: linear-gradient(100deg, #8b5cf6, #d946ef 52%, #22d3ee);
+    background-size: 180% 100%;
+    box-shadow:
+      0 10px 30px -12px rgba(139, 92, 246, 0.75),
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    transition:
+      background-position 0.5s ease,
+      transform 0.15s ease,
+      box-shadow 0.25s ease;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-position: 100% 0;
+    box-shadow:
+      0 16px 40px -12px rgba(217, 70, 239, 0.7),
+      0 0 0 1px rgba(255, 255, 255, 0.14) inset;
+  }
+  .btn-primary:active:not(:disabled) {
+    @apply scale-[0.97];
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/10 bg-white/[0.03] text-gray-300 hover:border-brand-violet/40 hover:bg-white/[0.06] hover:text-white;
+  }
+
+  .btn-danger {
+    @apply btn border border-rose-500/30 bg-rose-500/10 text-rose-300 hover:border-rose-400/60 hover:bg-rose-500/20 hover:text-rose-100;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  /* ---- input ---- */
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-base-900/70 px-3.5 py-2.5 text-sm text-gray-100
+           placeholder:text-gray-600 transition-colors duration-200
+           focus:border-brand-violet/60 focus:bg-base-900 focus:outline-none focus:ring-2 focus:ring-brand-violet/25;
+  }
+
+  .label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500;
+  }
+
+  /* ---- badge / pill ---- */
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-gray-400;
+  }
+
+  .pill-live {
+    @apply border-emerald-400/30 bg-emerald-400/10 text-emerald-300;
+  }
+
+  .pill-warn {
+    @apply border-amber-400/30 bg-amber-400/10 text-amber-300;
+  }
+
+  .pill-idle {
+    @apply border-white/10 bg-white/[0.04] text-gray-400;
+  }
+
+  /* ---- mono stat ---- */
+  .stat {
+    @apply font-mono text-[13px] tabular-nums text-gray-300;
+  }
+
+  .kicker {
+    @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500;
+  }
+
+  /* ---- grid halus di belakang ---- */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+
+  /* ---- noise tipis ---- */
+  .noise::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+
+  /* ---- divider gradien ---- */
+  .divider {
+    @apply h-px w-full;
+    background-image: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.35), rgba(34, 211, 238, 0.25), transparent);
+  }
+
+  /* ---- shimmer skeleton ---- */
+  .shimmer {
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.09) 50%, rgba(255, 255, 255, 0.03) 75%);
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 42px -8px rgba(139, 92, 246, 0.65);
+  }
+  .glow-cyan {
+    box-shadow: 0 0 42px -8px rgba(34, 211, 238, 0.5);
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 24px rgba(139, 92, 246, 0.45);
+  }
+}
+
+/* Video preview biar nggak norak */
+video {
+  @apply rounded-xl bg-black;
+}
+
+/* Reduce motion buat yang sensitif */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

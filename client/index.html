@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="id" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#07070d" />
+    <meta name="color-scheme" content="dark" />
+    <title>KyyPureStatus — Video HD Anti Buram, Auto Kekirim ke WA</title>
+    <meta
+      name="description"
+      content="KyyPureStatus by KyyDevv — kompresi video HD cerdas di server, terus otomatis dikirim ke WhatsApp lu. Story/status lu tetep tajem, nggak buram lagi pas diterusin."
+    />
+    <meta property="og:title" content="KyyPureStatus — Video HD Anti Buram" />
+    <meta
+      property="og:description"
+      content="Seret video lu, server yang mikir, WA yang ngirim. Hasilnya tetep HD pas diterusin ke Status."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="author" content="KyyDevv" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIxMiIgeTE9IjgiIHgyPSI1MiIgeTI9IjU2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzhiNWNmNiIvPjxzdG9wIG9mZnNldD0iMC41IiBzdG9wLWNvbG9yPSIjZDk0NmVmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMTYiIGZpbGw9IiMwNzA3MGQiIHN0cm9rZT0iIzJhMjQ0MCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yMCAxMmg3LjZ2NDBIMjB6IiBmaWxsPSJ1cmwoI2cpIi8+CjxwYXRoIGQ9Ik0zMC40IDMyIDQ0LjYgMTJoOC4yTDM3LjYgMzJsMTUuMiAyMGgtOC4yTDMwLjQgMzJaIiBmaWxsPSJ1cmwoI2cpIi8+Cjwvc3ZnPg=="
+    />
+    <style>
+      /* Critical CSS inline biar nggak ada flash putih pas first paint */
+      html,
+      body,
+      #root {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: #07070d;
+        color: #e5e7eb;
+        font-family: 'Inter var', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      #boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        gap: 18px;
+        background: radial-gradient(1200px 600px at 50% -10%, rgba(139, 92, 246, 0.16), transparent 60%), #07070d;
+        z-index: 999;
+        transition: opacity 0.4s ease;
+      }
+      #boot .ring {
+        width: 46px;
+        height: 46px;
+        border-radius: 999px;
+        border: 2px solid rgba(139, 92, 246, 0.25);
+        border-top-color: #22d3ee;
+        animation: bootspin 0.9s linear infinite;
+      }
+      #boot p {
+        color: #9ca3af;
+        font-size: 13px;
+        letter-spacing: 0.02em;
+      }
+      @keyframes bootspin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="boot">
+        <div class="ring"></div>
+        <p>Ngidupin mesin kompresi KyyPureStatus...</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+# =============================================================================
+#  KyyPureStatus — .gitignore
+# =============================================================================
+
+# --- Node ---
+node_modules/
+client/node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.pnpm-store/
+
+# --- Env & rahasia ---
+.env
+.env.local
+.env.*.local
+*.pem
+
+# --- Data runtime (volume Railway, JANGAN di-commit) ---
+data/*
+!data/.gitkeep
+data/sessions/
+data/uploads/
+data/output/
+data/thumbs/
+data/history.json
+data/appstate.json
+data/itest*/
+data/smoke/
+
+# --- Build output ---
+client/dist/
+client/.vite/
+dist/
+build/
+
+# --- Log & cache ---
+logs/
+*.log
+.cache/
+tmp/
+.tmp/
+
+# --- OS & editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# --- Test artifact ---
+coverage/
+.nyc_output/
+
+# sisa artefak integration test
+data/itest-data/
